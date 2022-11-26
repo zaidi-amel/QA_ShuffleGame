@@ -1,0 +1,62 @@
+import java.sql.SQLOutput;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        String ready;
+        String pick;
+        String answer;
+        Integer[] array = {1, 1, 0};
+        //shuffle
+        List<Integer> intList = Arrays.asList(array);
+        System.out.println(intList);
+        System.out.println("------------- Welcome to shuffle game --------------");
+        System.out.println("Guess where the 0 is?");
+
+        do {
+            System.out.println("Are you ready to play? y/n");
+            ready = sc.nextLine();
+            while (!(ready.equalsIgnoreCase("n")) && !(ready.equalsIgnoreCase("y"))) {
+                System.out.println("invalid entry, please enter y or n");
+                ready = sc.nextLine();
+            }
+            //System.out.println(intList);
+            //shuffle array
+            if (ready.equalsIgnoreCase("y")) {
+                Collections.shuffle(intList);
+            }else {
+                break;
+            }
+            System.out.println(intList);
+            System.out.println("Pick 1, 2 or 3!");
+            pick = sc.nextLine();
+            while (!(pick.equalsIgnoreCase("1")) && !(pick.equalsIgnoreCase("2")) && !(pick.equalsIgnoreCase("3"))) {
+                System.out.println("invalid entry, please enter 1, 2 or 3");
+                pick = sc.nextLine();
+            }
+            System.out.println(intList.indexOf(0));
+            if (Integer.parseInt(pick) == intList.indexOf(0) + 1) {
+                System.out.println("Good Guess!");
+            } else {
+                System.out.println("Sorry !! Wrong Guess");
+            }
+            System.out.println("Do you want to try again ? y/n");
+            //saisi y or no
+            answer = sc.nextLine();
+            while (!(answer.equalsIgnoreCase("n")) && !(answer.equalsIgnoreCase("y"))) {
+                System.out.println("invalid entry, please enter y or n");
+                answer = sc.nextLine();
+            }
+
+
+        }while (answer.equalsIgnoreCase("y"));
+
+        System.out.println("See you next time");
+
+    }
+}
